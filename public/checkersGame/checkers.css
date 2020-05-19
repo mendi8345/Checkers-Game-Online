@@ -1,0 +1,202 @@
+    body {
+        background-color: #dddddd;
+        /* background-color: dddddd#; */
+        /* text-align: center; */
+    }
+    
+    #board {
+        background-image: url("images/black-marble.jpg");
+        display: inline-block;
+        padding: 1vmin;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+    
+    .row {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .cell {
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+        display: inline-block;
+        margin: 0px;
+    }
+    
+    .black {
+        background-color: rgb(0, 0, 0);
+        background: rgb(59, 58, 58);
+        /* border-radius: 50%; */
+        /* background-image: url(""); */
+    }
+    
+    .white {
+        /* background-color: #DC143c; */
+        background-color: rgb(241, 229, 229);
+    }
+    
+    .checker {
+        margin: 10%;
+        border-radius: 50%;
+        width: 80%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: blinker 10000000s linear infinite;
+    }
+    
+    .white-checker {
+        background-image: url("images/go-stone-white.png");
+        background-size: cover;
+        color: #444444;
+    }
+    
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .black-checker {
+        background-image: url("images/go-stone-black.png");
+        background-size: cover;
+        color: #cccccc;
+    }
+    
+    i {
+        font-size: 3vmin;
+        /* background-image: url("images/crown.png"); */
+    }
+    
+    .selected {
+        margin: 0;
+        border: 1vmin solid rgba(255, 255, 255, 0.5);
+        background-repeat: no-repeat;
+        animation: blinker 200000s linear infinite;
+        /* opacity: 0; */
+    }
+    
+    .out-of-play {
+        /*width: 10vmin;*/
+        /*height: 10vmin;*/
+    }
+    
+    .ready-to-kill {
+        animation: blinker 1s linear infinite;
+    }
+    
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    
+    #reset {
+        display: block;
+        border: 0;
+        color: #F1F1FF;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 20px auto 10px;
+        padding: 10px;
+        background-color: #16A8C7;
+        box-shadow: 1px 1px 3px #232621;
+        transition: background-color 0.15s
+    }
+    
+    #turn {
+        /* border: rgb(90, 70, 70); */
+        position: absolute;
+        left: 300px;
+        top: 300px;
+        background-color: rgb(0, 0, 0);
+        background: rgb(59, 58, 58);
+        /* background-color: rgb(90, 70, 70); */
+    }
+    
+    .my-turn {
+        margin: 0;
+        border: 1vmin solid rgba(255, 255, 255, 0.5);
+        background-repeat: no-repeat;
+        animation: blinker 200000s linear infinite;
+    }
+    
+    #white-turn {
+        background-image: url("images/go-stone-white.png");
+        background-size: cover;
+        /* color: #444444; */
+        /* background-color: rgb(0, 0, 0); */
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+        /* display: inline-block; */
+        /* top: 50%;
+    left: 30%; */
+        margin-right: -20%;
+        margin: 0px;
+        /* position: absolute; */
+        /* left: 300px;
+    top: 300px; */
+    }
+    
+    #black-turn {
+        background-image: url("images/go-stone-black.png");
+        background-size: cover;
+        color: #cccccc;
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+        top: 50px;
+        left: 30px;
+        margin-right: -200px;
+        /* display: inline-block; */
+        margin: 0px;
+        /* position: absolute;
+    left: 300px;
+    top: 400px; */
+    }
+    
+    .clickbtn {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        margin: 2px;
+        text-decoration: none;
+        font: bold 14px/25px Arial, sans-serif;
+        color: #19667d;
+        border: 1px solid #8af;
+        border-radius: 10px;
+        cursor: pointer;
+        background: linear-gradient(to top right, rgba(170, 190, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    }
+    
+    .W-color {
+        background-image: url("images/go-stone-white.png");
+        background-size: cover;
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+    }
+    
+    .B-color {
+        background-image: url("images/go-stone-black.png");
+        background-size: cover;
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+    }
+    
+    h1 {
+        border: rgb(90, 70, 70);
+    }
