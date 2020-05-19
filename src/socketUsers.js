@@ -26,7 +26,8 @@ const addUser = ({ id, userId, username, room }) => {
     // Store user
     const user = { id, userId, username, room }
     users.push(user)
-    return { user }
+    return user
+
 }
 
 const removeUser = (id) => {

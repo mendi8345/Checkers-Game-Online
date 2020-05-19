@@ -4,6 +4,7 @@ console.log(Qs)
 const { id } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 console.log("lamaaaaaaaaaaaaa", id)
 socket.emit('join', { id })
+var player = undefined
 
 const playersTemplate = document.querySelector('#list-of-players').innerHTML
 const li = document.getElementsByTagName("li")
@@ -19,7 +20,15 @@ const selectPlayer = (li) => {
     }
 }
 
-socket.on('roomData', (users) => {
+socket.on('player', (data) => {
+    player = data
+    console.log("you = ", player)
+})
+
+socket.on('roomData', (data) => {
+    const id = player.id
+    console.log(id)
+    const users = data.filter(user => user.id !== id);
     const html = Mustache.render(playersTemplate, {
         users
     })

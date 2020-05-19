@@ -32,8 +32,10 @@ io.on('connection', (socket) => {
         const user = await findUser(id)
 
         if (user) {
-            addUser({ id: socket.id, userId: user.id, username: user.name, room: "players" })
+            const player = addUser({ id: socket.id, userId: user.id, username: user.name, room: "players" })
+            socket.emit("player", player)
             const users = getUsersInRoom(room)
+
             socket.join("players")
             console.log(users)
             io.to(room).emit('roomData', (users))
