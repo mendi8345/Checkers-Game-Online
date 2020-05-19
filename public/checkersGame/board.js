@@ -95,7 +95,7 @@ socket.on("start-new-game", () => {
     const id = player.userId
     player = null
     console.log("client           start-new-game")
-    window.open("http://localhost:3000/play?id=" + id, "_self")
+    window.open(window.location.origin + "/play?id=" + player.userId, "_self")
 })
 
 // socket.on("ForcedKillOnBoard", (data) => {
@@ -360,40 +360,7 @@ function isThereAWin(checkers, turn) {
 }
 
 
-// function checkIfopponentOutOfCheckers(checkers) {
-//     var numOfBlackCheckers = 0;
-//     var numOfWhiteCheckers = 0;
-//     for (let index = 0; index < checkers.length; index++) {
-//         var checker = checkers[index];
 
-//         if (checker.color == "black") {
-//             numOfBlackCheckers++;
-//             (numOfBlackCheckers)
-//         }
-//         if (checker.color == "white") {
-//             numOfWhiteCheckers++;
-//             (numOfWhiteCheckers)
-//         }
-//     }
-//     if (numOfBlackCheckers == 0) {
-//         playerColor == "white" ? winner = player : loser = player
-
-//         var message = "GAME OVER: white player won \n +10 points"
-//         socket.emit("winner", { winner, thisRoom })
-//         socket.emit("loser", { loser, thisRoom })
-//         setTimeout(function() { alert(message) }, 30)
-//             // setTimeout(function() { clearBoard(); }, 35)
-//             // window.open("http://localhost:3000/play?id=" + player.userId, "_self")
-//     }
-//     if (numOfWhiteCheckers == 0) {
-//         playerColor == "black" ? winner = player : loser = player
-//         socket.emit("winner", { winner, thisRoom })
-//         socket.emit("loser", { loser, thisRoom })
-//         setTimeout(function() { alert("GAME OVER: BLACK PLYAR WON") }, 30)
-//             // setTimeout(function() { clearBoard() }, 31)
-//             // window.open("http://localhost:3000/play?id=" + player.userId, "_self")
-//     }
-// }
 
 function checkIfOpponentCannotMove(turn) {
     var win = true;
@@ -423,8 +390,8 @@ function checkIfOpponentCannotMove(turn) {
         socket.emit("loser", { loser, thisRoom })
         setTimeout(function() { alert(message) }, 30)
         setTimeout(function() { clearBoard() }, 35)
-        setTimeout(function() { window.open("http://localhost:3000/play?id=" + player.userId, "_self") }, 35)
-            // window.open("http://localhost:3000/play?id=" + player.userId, "_self")
+        setTimeout(function() { window.open(window.location.origin + "/play?id=" + player.userId, "_self") }, 35)
+            // window.open("/play?id=" + player.userId, "_self")
         return win;
     }
 }
@@ -435,7 +402,7 @@ function isDraw(numOfKingsMovesWithoutKill) {
         setTimeout(function() { alert("DRAW: GAME OVER") }, 30)
         setTimeout(function() { clearBoard(); }, 35)
         socket.emit("draw")
-        setTimeout(function() { window.open("http://localhost:3000/play?id=" + player.userId, "_self") }, 35)
+        setTimeout(function() { window.open(window.location.origin + "/play?id=" + player.userId, "_self") }, 35)
 
     }
 }

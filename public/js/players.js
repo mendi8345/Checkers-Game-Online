@@ -62,7 +62,7 @@ socket.on('confirm-play', (data) => {
     // room = room.trim().toLowerCase()
     const user = data.gamePlayers.find((user) => user.id === socket.id)
 
-    window.open("http://localhost:3000/checkersGame/checkers.html?id=" + user.userId + "&room=" + data.room, "_self")
+    window.open(window.location.origin + "/checkersGame/checkers.html?id=" + user.userId + "&room=" + data.room, "_self")
     socket.emit("game-room", data.room)
 })
 
