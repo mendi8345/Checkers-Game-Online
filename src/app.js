@@ -11,7 +11,7 @@ const app = express()
 
 
 
-const publicDirectoryPath = path.join(__dirname, '/../public')
+const publicDirectoryPath = path.join(__dirname, '/../public/html/login.html')
     // app.use('*/images', express.static('public/img'));
 app.use(express.static(publicDirectoryPath))
 app.use(bodyParser.urlencoded({ extended: true }));
