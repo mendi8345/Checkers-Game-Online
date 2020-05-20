@@ -38,6 +38,7 @@ socket.on('roomData', (data) => {
         users
     })
     document.querySelector('#players').innerHTML = html
+
     selectPlayer(li)
 })
 
