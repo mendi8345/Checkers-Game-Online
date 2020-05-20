@@ -33,11 +33,11 @@ socket.on('roomData', (data) => {
     const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
     $list.innerHTML = msg
 
+
     const html = Mustache.render(playersTemplate, {
         users
     })
     document.querySelector('#players').innerHTML = html
-        // alert("in room data")
     selectPlayer(li)
 })
 
