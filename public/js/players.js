@@ -27,9 +27,11 @@ socket.on('player', (data) => {
 })
 
 socket.on('roomData', (data) => {
-        const id = player.id
-        console.log(id)
-        const users = data.filter(user => user.id !== id);
+        const userId = player.userId
+        console.log("userId = ",
+            userId)
+        console.log("data = ", data)
+        const users = data.filter(user => user.userId !== userId);
         const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
         $list.innerHTML = msg
 
@@ -72,7 +74,10 @@ socket.on('confirm-play', (data) => {
     socket.emit("game-room", data.room)
 })
 
-
+window.onbeforeunload = function() {
+    socket.emit("unload", this.player)
+    alert("window.onbeforeunload")
+};
 
 // $messageForm.addEventListener('submit', (e) => {
 //     e.preventDefault()

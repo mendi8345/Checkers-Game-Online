@@ -97,6 +97,13 @@ io.on('connection', (socket) => {
             // })
 
     })
+    socket.on("unload", (data) => {
+        const gamePlayers = getUsersInRoom("players")
+        gamePlayers.forEach(player => {
+            if (player.userId == data.userId)
+                removeUser(player.id)
+        });
+    })
 
     var checkers = [
         { row: 1, cell: 2, color: 'white', isKing: false },
