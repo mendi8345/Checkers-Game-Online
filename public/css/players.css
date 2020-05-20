@@ -5,7 +5,7 @@
 }
 
 .centered {
-    background: #ff4b2b;
+    background: hsl(60, 66%, 10%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -14,10 +14,11 @@
 }
 
 .centered-box {
-    box-shadow: 0px 0px 17px 1px #1D1F26;
+    box-shadow: 30px 30px 300px 30px #1D1F26;
     background: #F7F7FA;
     padding: 60px;
     width: 400px;
+    height: 700px;
 }
 
 div#players {
@@ -60,7 +61,7 @@ ul li {
 }
 
 li.changeBackground {
-    background-color: blue;
+    background-color: hsl(60, 66%, 10%);
 }
 
 li.changeBackground:hover {
@@ -68,7 +69,21 @@ li.changeBackground:hover {
 }
 
 li.changeBackground:active {
-    background-color: darkBlue;
+    background-color: hsl(60, 66%, 10%);
+}
+
+.clickbtn {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 2px;
+    text-decoration: none;
+    font: bold 14px/25px Arial, sans-serif;
+    color: #19667d;
+    border: 1px solid #8af;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(to top right, rgba(170, 190, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 

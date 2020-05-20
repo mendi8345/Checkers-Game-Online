@@ -93,9 +93,10 @@ socket.on("numOfKillInThisTurn", (data) => {
 socket.on("start-new-game", () => {
     // player.room = "players"
     const id = player.userId
-    player = null
-    console.log("client           start-new-game")
+
+    console.log("client           start-new-game ")
     window.open(window.location.origin + "/play?id=" + player.userId, "_self")
+    player = null
 })
 
 // socket.on("ForcedKillOnBoard", (data) => {

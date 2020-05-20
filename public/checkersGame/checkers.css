@@ -1,5 +1,5 @@
     body {
-        background-color: #dddddd;
+        background-color: hsl(60, 66%, 10%);
         /* background-color: dddddd#; */
         /* text-align: center; */
     }
@@ -116,16 +116,22 @@
         position: absolute;
         left: 300px;
         top: 300px;
-        background-color: rgb(0, 0, 0);
-        background: rgb(59, 58, 58);
+        width: 8vw;
+        height: 8vw;
+        max-height: 11vh;
+        max-width: 11vh;
+        display: inline-block;
+        margin: 0px;
+        /* background-color: rgb(0, 0, 0);
+        background: rgb(59, 58, 58); */
         /* background-color: rgb(90, 70, 70); */
     }
     
     .my-turn {
         margin: 0;
-        border: 1vmin solid rgba(255, 255, 255, 0.5);
+        /* border: 1vmin solid rgba(255, 255, 255, 0.5); */
         background-repeat: no-repeat;
-        animation: blinker 200000s linear infinite;
+        animation: blinker 2.5s linear infinite;
     }
     
     #white-turn {
@@ -198,5 +204,6 @@
     }
     
     h1 {
-        border: rgb(90, 70, 70);
+        color: hsl(60, 27%, 87%);
+        border: hsl(60, 66%, 10%);
     }
