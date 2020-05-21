@@ -56,7 +56,7 @@ io.on('connection', (socket) => {
     })
     socket.on("confirm-play", (data) => {
         console.log("confirm-play", data)
-        if (data.play) {
+        if (data.isConfirmPlay) {
             const room = data.room
             socket.join(data.room)
             const user1 = getUser(socket.id)
@@ -202,6 +202,7 @@ io.on('connection', (socket) => {
         const user = data.winner
         if (user) {
             const winner = await findUser(user.userId)
+            await updateRating(winner, winner.rating + 10)
             await updateRating(winner, winner.rating + 10)
         }
         const users = getUsersInRoom(data.thisRoom)

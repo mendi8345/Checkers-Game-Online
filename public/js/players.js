@@ -2,14 +2,16 @@ const socket = io()
 const socketUser = null
 console.log(Qs)
 const { id } = Qs.parse(location.search, { ignoreQueryPrefix: true })
-console.log("lamaaaaaaaaaaaaa", id)
-socket.emit('join', { id })
+
+
 var player = undefined
 var $list = document.getElementById("list")
 
 const playersTemplate = document.querySelector('#list-of-players').innerHTML
 const li = document.getElementsByTagName("li")
 
+
+socket.emit('join', { id })
 
 const selectPlayer = (li) => {
     for (let index = 0; index < li.length; index++) {
@@ -34,8 +36,6 @@ socket.on('roomData', (data) => {
         const users = data.filter(user => user.userId !== userId);
         const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
         $list.innerHTML = msg
-
-
         const html = Mustache.render(playersTemplate, {
             users
         })
@@ -50,13 +50,15 @@ socket.on('join-game', (data) => {
     console.log(data, "x`5555")
     user = data.user
     console.log("client on join game user = ", user)
-    var play = confirm("play with " + user.username)
-    if (play) {
+    var isConfirmPlay = confirm("play with " + user.username)
+    if (isConfirmPlay) {
         // window.open("http://localhost:3000/checkersGame/checkers.html", "_self")
         socket.emit("confirm-play", {
-            play,
+            isConfirmPlay,
+            player,
             socketId: data.invitingPlayerId,
             room: data.room
+
         })
     }
 
