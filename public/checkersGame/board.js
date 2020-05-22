@@ -90,6 +90,7 @@ socket.on("numOfKillInThisTurn", (data) => {
     numOfKillInThisTurn = data
 
 })
+
 socket.on("start-new-game", () => {
     // player.room = "players"
     const id = player.userId
@@ -105,7 +106,7 @@ socket.on("start-new-game", () => {
 //         isThereAForcedKillOnBoard()
 //     }
 // })
-
+// 
 // socket.on("anotherdKillForThisTurn", (data) => {
 //     console.log("on anotherdKillForThisTurn =", data)
 //     checkers.forEach(checker => {
