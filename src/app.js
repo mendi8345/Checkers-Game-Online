@@ -20,4 +20,7 @@ app.use(express.json())
     // app.use('/auth', auth);
 app.use(userRouter)
 
+app.use(function(req, res) {
+    res.status(400).render('error');
+});
 module.exports = app
