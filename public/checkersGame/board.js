@@ -24,24 +24,31 @@ var $myColor = document.getElementById("player-color")
 
 
 var $newGame = document.getElementById("new-game")
-$newGame.addEventListener('click', () => {
+$newGame.addEventListener('click', leaveGame)
+    // window.onbeforeunload = fu leaveGame()
+
+window.addEventListener('beforeunload', leaveGame)
+
+
+function leaveGame() {
     const newGame = confirm("Are you sure you want to play a new game")
     if (newGame) {
 
         console.log("ma kore itcha")
             // player.room = "players"
         socket.emit("start-new-game", {
-                player,
-                thisRoom,
-                winner,
-                loser
-            })
-            // window.open("http://localhost:3000/play?id=" + player.userId, "_self")
-            // play ? id = ' + user.id
+            player,
+            thisRoom,
+            winner,
+            loser
+        })
+
 
     }
+}
 
-})
+
+
 
 
 socket.emit("play-now", { userId, thisRoom })
@@ -81,38 +88,21 @@ socket.on("turn", (data) => {
     divTurn.classList.add("my-turn")
 })
 
-// socket.on("check-Win", (data) => {
-//     s
-//     isThereAWin(checkers, turn)
 
-// })
 socket.on("numOfKillInThisTurn", (data) => {
     numOfKillInThisTurn = data
 
 })
 
 socket.on("start-new-game", () => {
-    // player.room = "players"
     const id = player.userId
-
     console.log("client           start-new-game ")
     window.open(window.location.origin + "/play?id=" + player.userId, "_self")
     player = null
 })
 
-// socket.on("ForcedKillOnBoard", (data) => {
-//     console.log("on ForcedKillOnBoard =", data)
-//     if (!anotherdKillForThisTurn) {
-//         isThereAForcedKillOnBoard()
-//     }
-// })
-// 
-// socket.on("anotherdKillForThisTurn", (data) => {
-//     console.log("on anotherdKillForThisTurn =", data)
-//     checkers.forEach(checker => {
-//         isThereAForcedKillForThisChecker(checker, checker.color)
-//     });
-// })
+
+
 socket.on("checkerToKill", (data) => {
     console.log("on checkerToKill =", data)
     checkerToKill = data

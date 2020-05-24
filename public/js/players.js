@@ -76,10 +76,28 @@ socket.on('confirm-play', (data) => {
     socket.emit("game-room", data.room)
 })
 
-window.onbeforeunload = function() {
-    socket.emit("unload", this.player)
-    alert("window.onbeforeunload")
-};
+// window.onbeforeunload = function() {
+//     alert("window.onbeforeunload")
+//     confirm("window.onbeforeunload")
+
+//     socket.emit("unload", this.player)
+// };
+
+// window.onhashchange = function() {
+//     window.confirm("window.onbeforeunload")
+//     window.alert("window.onbeforeunload")
+//     socket.emit("unload", this.player)
+// };
+
+window.onhashchange = function() {
+    if (window.innerDocClick) {
+        //Your own in-page mechanism triggered the hash change
+    } else {
+        window.confirm("window.onbeforeunload")
+            //Browser back button was clicked
+    }
+}
+
 
 // $messageForm.addEventListener('submit', (e) => {
 //     e.preventDefault()

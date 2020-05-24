@@ -12,10 +12,14 @@ const findUser = async(id) => {
     console.log(user.name)
     return user;
 }
-const updateRating = async(user, rating) => {
-    console.log("mmmmmaaaaaaaaaaaaaaaaaaa")
-    user['rating'] = rating
-    console.log("inside updateRating user['rating'] = ", user.name, " ", user.rating)
+const updateRating = async(user, valus, updates) => {
+    for (let index = 0; index < updates.length; index++) {
+        const update = updates[index];
+        user[update] = valus[index]
+    }
+    // user[updates[0]] = valus[0]
+    // user['rating'] = rating[0]
+    console.log("inside updateRating user['rating'] = ", user.name, " ", user.rating, " ", user.numOfGames, " ", user.numOfWins, " ", user.numOfLosses)
     await user.save()
     return user;
 }
@@ -32,6 +36,7 @@ io.on('connection', (socket) => {
         const user = await findUser(id)
 
         if (user) {
+
             const player = addUser({ id: socket.id, userId: user.id, username: user.name, room: "players" })
             socket.emit("player", player)
             const users = getUsersInRoom(room)
@@ -106,30 +111,30 @@ io.on('connection', (socket) => {
     })
 
     var checkers = [
-        { row: 1, cell: 2, color: 'white', isKing: false },
-        { row: 1, cell: 4, color: 'white', isKing: false },
-        { row: 1, cell: 6, color: 'white', isKing: false },
-        { row: 1, cell: 8, color: 'white', isKing: false },
-        { row: 2, cell: 1, color: 'white', isKing: false },
-        { row: 2, cell: 3, color: 'white', isKing: false },
-        { row: 2, cell: 5, color: 'white', isKing: false },
-        { row: 2, cell: 7, color: 'white', isKing: false },
-        { row: 3, cell: 2, color: 'white', isKing: false },
-        { row: 3, cell: 4, color: 'white', isKing: false },
-        { row: 3, cell: 6, color: 'white', isKing: false },
+        // { row: 1, cell: 2, color: 'white', isKing: false },
+        // { row: 1, cell: 4, color: 'white', isKing: false },
+        // { row: 1, cell: 6, color: 'white', isKing: false },
+        // { row: 1, cell: 8, color: 'white', isKing: false },
+        // { row: 2, cell: 1, color: 'white', isKing: false },
+        // { row: 2, cell: 3, color: 'white', isKing: false },
+        // { row: 2, cell: 5, color: 'white', isKing: false },
+        // { row: 2, cell: 7, color: 'white', isKing: false },
+        // { row: 3, cell: 2, color: 'white', isKing: false },
+        // { row: 3, cell: 4, color: 'white', isKing: false },
+        // { row: 3, cell: 6, color: 'white', isKing: false },
         { row: 3, cell: 8, color: 'white', isKing: false },
-        { row: 6, cell: 1, color: 'black', isKing: false },
-        { row: 6, cell: 3, color: 'black', isKing: false },
-        { row: 6, cell: 5, color: 'black', isKing: false },
+        // { row: 6, cell: 1, color: 'black', isKing: false },
+        // { row: 6, cell: 3, color: 'black', isKing: false },
+        // { row: 6, cell: 5, color: 'black', isKing: false },
         { row: 6, cell: 7, color: 'black', isKing: false },
-        { row: 7, cell: 2, color: 'black', isKing: false },
-        { row: 7, cell: 4, color: 'black', isKing: false },
-        { row: 7, cell: 6, color: 'black', isKing: false },
-        { row: 7, cell: 8, color: 'black', isKing: false },
-        { row: 8, cell: 1, color: 'black', isKing: false },
-        { row: 8, cell: 3, color: 'black', isKing: false },
-        { row: 8, cell: 5, color: 'black', isKing: false },
-        { row: 8, cell: 7, color: 'black', isKing: false },
+        // { row: 7, cell: 2, color: 'black', isKing: false },
+        // { row: 7, cell: 4, color: 'black', isKing: false },
+        // { row: 7, cell: 6, color: 'black', isKing: false },
+        // { row: 7, cell: 8, color: 'black', isKing: false },
+        // { row: 8, cell: 1, color: 'black', isKing: false },
+        // { row: 8, cell: 3, color: 'black', isKing: false },
+        // { row: 8, cell: 5, color: 'black', isKing: false },
+        // { row: 8, cell: 7, color: 'black', isKing: false },
     ]
 
 
@@ -202,8 +207,8 @@ io.on('connection', (socket) => {
         const user = data.winner
         if (user) {
             const winner = await findUser(user.userId)
-            await updateRating(winner, winner.rating + 10)
-            await updateRating(winner, winner.rating + 10)
+            await updateRating(winner, [winner.rating + 10, winner.numOfWins + 1, winner.numOfGames + 1], ['rating', 'numOfGames', 'numOfWins'])
+
         }
         const users = getUsersInRoom(data.thisRoom)
         users.forEach(user => {
@@ -215,7 +220,7 @@ io.on('connection', (socket) => {
         const user = data.loser
         if (user) {
             const loser = await findUser(user.userId)
-            await updateRating(loser, loser.rating - 10)
+            await updateRating(loser, [loser.rating + 10, loser.numOfGames + 1, loser.numOfLosses + 1], ['rating', 'numOfGames', 'numOfLosses'])
         }
         const users = getUsersInRoom(data.thisRoom)
         users.forEach(user => {

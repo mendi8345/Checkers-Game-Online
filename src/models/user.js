@@ -37,6 +37,11 @@ const userSchema = new mongoose.Schema({
         required: false,
         default: 800
     },
+    numOfGames: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     numOfWins: {
         type: Number,
         required: false,
