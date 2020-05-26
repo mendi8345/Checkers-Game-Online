@@ -34,7 +34,7 @@ socket.on('roomData', (data) => {
         userId)
     console.log("data = ", data)
     const users = data.filter(user => user.userId !== userId);
-    const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
+    const msg = users.length > 0 ? "Please select a player to play with" : "Waiting for other players to join...\nno player as joind yet"
     $list.innerHTML = msg
     const html = Mustache.render(playersTemplate, {
         users
