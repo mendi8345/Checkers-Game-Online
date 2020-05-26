@@ -27,7 +27,8 @@ router.post('/signup', async(req, res) => {
         await user.save()
         sendWelcomeEmail(user.email, user.name)
         token = await user.generateAuthToken()
-        res.status(200).redirect('/play?id=' + user.id)
+            // res.status(200).redirect('/play?id=' + user.id)
+        res.status(200).redirect('/home?id=' + user.id)
     } catch (e) {
         console.log(e)
         return res.redirect('/')
