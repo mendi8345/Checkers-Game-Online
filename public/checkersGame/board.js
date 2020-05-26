@@ -354,6 +354,7 @@ function isThereAForcedKillForThisChecker(checker, checkerColor) {
                     anotherdKillForThisTurn = true;
                 }
             }
+
         }
     }
 
@@ -367,8 +368,7 @@ function isThereAWin(checkers, turn) {
 
 }
 
-
-
+/////
 
 function checkIfOpponentCannotMove(turn) {
     var win = true;
