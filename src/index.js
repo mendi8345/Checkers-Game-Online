@@ -17,8 +17,6 @@ const updateRating = async(user, valus, updates) => {
         const update = updates[index];
         user[update] = valus[index]
     }
-    // user[updates[0]] = valus[0]
-    // user['rating'] = rating[0]
     console.log("inside updateRating user['rating'] = ", user.name, " ", user.rating, " ", user.numOfGames, " ", user.numOfWins, " ", user.numOfLosses)
     await user.save()
     return user;

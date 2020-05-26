@@ -358,7 +358,6 @@ function isThereAForcedKillForThisChecker(checker, checkerColor) {
     }
 
     return anotherdKillForThisTurn;
-
 }
 
 
