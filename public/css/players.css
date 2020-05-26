@@ -5,12 +5,13 @@
 }
 
 .centered {
-    background: hsl(60, 66%, 10%);
+    /* background: hsl(60, 66%, 10%); */
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('../img/WhatsApp\ Image\ 2020-05-25\ at\ 17.54.00.jpeg');
 }
 
 .centered-box {

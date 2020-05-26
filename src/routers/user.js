@@ -14,75 +14,94 @@ var user = null;
 const { sendWelcomeEmail, sendGoodByEmail } = require('../emails/account.js');
 
 const router = new express.Router()
-router.post('/signup', async(req, res) => {
-    console.log(req.body)
-    const user = new User(req.body)
-
-    try {
-        await user.save()
-        sendWelcomeEmail(user.email, user.name)
-        token = await user.generateAuthToken()
-            // res.redirect('/users/me')
-        res.status(200).redirect('/play?id=' + user.id)
-
-        // token = res.header('Authorization', 'Bearer ' + authToken);
-
-        // res.status(201).send({ user, token })
-    } catch (e) {
-        console.log(e)
-
-    }
-})
 
 router.get('/', async(req, res) => {
     console.log('login')
     res.sendFile(path.join(__dirname, '../../public/html/signup.html'))
 })
 
-router.get('/play', async(req, res) => {
-    console.log('play')
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    console.log("decoded.id= ", decoded.id)
-    const user = await User.findById(decoded.id)
-        // addUser({ id: undefined, userId: user.id, username: user.name, room: "players" })
-    res.sendFile(path.join(__dirname, '../../public/html/players.html'))
+router.post('/signup', async(req, res) => {
+    console.log(req.body)
+    const user = new User(req.body)
+    try {
+        await user.save()
+        sendWelcomeEmail(user.email, user.name)
+        token = await user.generateAuthToken()
+        res.status(200).redirect('/play?id=' + user.id)
+    } catch (e) {
+        console.log(e)
+        return res.redirect('/')
+
+    }
 })
+
 
 router.post('/login', async(req, res) => {
     try {
         console.log('login post ')
         const user = await User.findByCredentials(req.body.email, req.body.password)
         if (!user) {
-            return res.status(400).send("no user with this Credentials")
+            return res.redirect('/')
         }
         token = await user.generateAuthToken();
         if (!token) {
-            return res.status(400).send("no token provided")
+            return res.redirect('/')
+                // return res.status(400).send("no token provided")
         }
-        res.status(200).redirect('/play?id=' + user.id)
+        // res.status(200).redirect('/play?id=' + user.id)
+        res.status(200).redirect('/home?id=' + user.id)
+
+        // res.status(200).redirect('/users/me')
         if (redirectTo)
             res.redirect(redirectTo)
             // res.status(200).redirect('/users/me/')
+            // res.sendFile(path.join(__dirname, '../../public/html/index.html?id=' + user.id))
 
     } catch (e) {
         console.log(e)
-        res.status(400).send()
+            // alert("invalid email or password")
+        return res.redirect('/')
+
+        // res.status(400).send()
     }
 })
 
-router.get('/users/me', async(req, res) => {
-    // const user = auth(token)
+router.get('/play', async(req, res) => {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    console.log("decoded.id= ", decoded.id)
+    const user = await User.findById(decoded.id)
+    res.sendFile(path.join(__dirname, '../../public/html/players.html'))
+})
+router.get('/home', async(req, res) => {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    console.log("decoded.id= ", decoded.id)
+    const user = await User.findById(decoded.id)
+    res.sendFile(path.join(__dirname, '../../public/html/home.html'))
+})
 
-    console.log("in get profile")
+
+
+
+
+router.get('/users/me', async(req, res) => {
     console.log(token)
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
     const user = await User.findById(decoded.id)
     if (!user) {
         redirectTo = '/users/me'
-        res.redirect('/login')
+            // res.render("profile": )
+
     }
     console.log(user, ";;;;;;;;")
-    res.status(200).send(user)
+    res.render('profile', {
+            name: user.name,
+            email: user.email,
+            rating: user.rating,
+            numOfGames: user.numOfGames,
+            numOfWins: user.numOfGames,
+            numOfLosses: user.numOfLosses,
+        })
+        // res.status(200).send(user)
 })
 
 // router.post('/users/logout', async(req, res) => {

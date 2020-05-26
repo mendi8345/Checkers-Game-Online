@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/home.css">
+    <title>
+        checkers-game
+    </title>
+
+</head>
+<!-- '../img/WhatsApp\ Image\ 2020-05-25\ at\ 17.54.00.jpeg' -->
+
+<body>
+    <br />
+    <div id="container">
+        <h3 align="center">
+
+            <!-- <font face="Lato" size="6">LOGO</font> -->
+
+            <font face="cinzel" size="5">
+
+                <h1 align="center ">
+                    <font face="Lato " color="#458607 " size="7 ">
+                        welcome to checkers game
+                    </font>
+                </h1>
+        </h3>
+        <!-- <a style="color:#458607 ;">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
+        <!-- <a style="color:#458607;">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color:#458607 ;" href="# ">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color:#458607 ;" href="# ">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color:#458607 ;" href="# ">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
+        <!-- </font> -->
+
+        <!-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
+
+        <h3 align="center ">
+            <font face="Lato " color="#458607 " size="5 ">
+            </font>
+        </h3>
+        <br />
+        <h3 align="center ">
+            <a href="#" onclick="profile()">
+                <font face="Lato " color="#458607 ">profile</font>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" onclick="play()">
+                <font face="Lato " color="#458607 ">play now</font>
+            </a>
+        </h3>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get("id");
+
+        function play() {
+            window.open(window.location.origin + "/play/?id=" + userId, "_self")
+        }
+
+        function profile() {
+            window.open(window.location.origin + "/users/me", "_self")
+        }
+    </script>
+</body>
+
+</html>

@@ -1,7 +1,16 @@
     body {
-        background-color: hsl(60, 66%, 10%);
+        /* background-color: hsl(60, 66%, 10%); */
         /* background-color: dddddd#; */
         /* text-align: center; */
+        background-image: url('../img/WhatsApp\ Image\ 2020-05-25\ at\ 17.54.00.jpeg');
+        /* position: absolute; */
+        /* display: inline-block; */
+        /* padding: 1vmin;
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        margin-right: -0%;
+        transform: translate(-50%, -50%) */
     }
     
     #board {
@@ -111,38 +120,75 @@
         transition: background-color 0.15s
     }
     
-    #turn {
-        /* border: rgb(90, 70, 70); */
+    #user-game-data {
+        box-shadow: 30px 30px 300px 30px #1D1F26;
         position: absolute;
+        top: 50%;
+        left: 10%;
+        margin-right: -0%;
+        transform: translate(-50%, -50%);
+        border: 1px solid rgb(241, 229, 229);
+        border-radius: 10px;
+        background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%);
+        width: 300px;
+        height: 400px;
+        display: inline-block;
+    }
+    
+    #turn {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 85%;
+        margin-right: -0%;
+        transform: translate(-50%, -50%);
+        font: bold 14px/25px Arial, sans-serif;
+        color: rgb(241, 229, 229);
+        border: 1px solid #8af;
+        border-radius: 50px;
+        cursor: pointer;
+        background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%);
+        /* border: #458607; */
+        /* padding: 30px; */
+        /* width: 100px;
+        height: 800px; */
+        z-index: 1;
+        /* position: absolute;
         left: 300px;
-        top: 300px;
-        width: 8vw;
+        top: 300px; */
+        /* width: 8vw;
         height: 8vw;
         max-height: 11vh;
         max-width: 11vh;
         display: inline-block;
-        margin: 0px;
-        /* background-color: rgb(0, 0, 0);
-        background: rgb(59, 58, 58); */
+        margin: 0px; */
+        /* background-color: #458607; */
+        /* background: rgb(59, 58, 58); */
         /* background-color: rgb(90, 70, 70); */
     }
     
     .my-turn {
         margin: 0;
+        border: 3vmin solid rgba(7, 0, 0, 0.274);
+        border-radius: 100px;
+        background-repeat: no-repeat;
+        animation: blinker 200000s linear infinite;
         /* border: 1vmin solid rgba(255, 255, 255, 0.5); */
         background-repeat: no-repeat;
-        animation: blinker 2.5s linear infinite;
+        /* animation: blinker 2.5s linear infinite; */
+        z-index: 5;
     }
     
     #white-turn {
-        background-image: url("images/go-stone-white.png");
+        /* background-image: url("images/go-stone-white.png"); */
         background-size: cover;
+        z-index: 5;
         /* color: #444444; */
         /* background-color: rgb(0, 0, 0); */
         width: 8vw;
         height: 8vw;
-        max-height: 11vh;
-        max-width: 11vh;
+        max-height: 30vh;
+        max-width: 30vh;
         /* display: inline-block; */
         /* top: 50%;
     left: 30%; */
@@ -154,14 +200,15 @@
     }
     
     #black-turn {
-        background-image: url("images/go-stone-black.png");
+        z-index: 5;
+        /* background-image: url("images/go-stone-black.png"); */
         background-size: cover;
         color: #cccccc;
         width: 8vw;
         height: 8vw;
-        max-height: 11vh;
-        max-width: 11vh;
-        top: 50px;
+        max-height: 30vh;
+        max-width: 30vh;
+        top: 100px;
         left: 30px;
         margin-right: -200px;
         /* display: inline-block; */
@@ -172,7 +219,7 @@
     }
     
     .clickbtn {
-        display: inline-block;
+        display: block;
         position: relative;
         text-align: center;
         margin: 2px;
@@ -192,6 +239,7 @@
         height: 8vw;
         max-height: 11vh;
         max-width: 11vh;
+        align-content: center;
     }
     
     .B-color {
@@ -204,6 +252,7 @@
     }
     
     h1 {
-        color: hsl(60, 27%, 87%);
-        border: hsl(60, 66%, 10%);
+        color: #458607;
+        border: #458607;
+        display: inline-block;
     }

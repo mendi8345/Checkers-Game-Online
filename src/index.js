@@ -75,10 +75,6 @@ io.on('connection', (socket) => {
                 // io.to("players").emit('roomData', (users))
             io.to("players").emit("roomData", allPlayers)
             io.to(data.room).emit("confirm-play", { gamePlayers, room })
-                // io.to(data.room).clients((err, clients) => {
-                //     console.log("inside  on turn turn = ", data.room) // loggs the correct room
-                //     console.log("inside  on turn clients = ", clients) // loggs an empty array
-                // })
 
         }
     })
@@ -160,11 +156,6 @@ io.on('connection', (socket) => {
         // socket.join(room)
         console.log("inside  on turn turn = ", data.turn)
         io.to(data.thisRoom).emit("turn", data.turn)
-            // io.in(data.thisRoom).clients((err, clients) => {
-            //         console.log("inside  on turn turn = ", data.thisRoom) // loggs the correct room
-            //         console.log("inside  on turn clients = ", clients) // loggs an empty array
-            //     })
-            // io.to(data.thisRoom)
     })
 
     socket.on("start-new-game", async(data) => {

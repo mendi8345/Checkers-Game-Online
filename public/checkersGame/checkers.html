@@ -15,14 +15,20 @@
 
 <body>
     <button id="new-game" class="clickbtn">start a new game</button>
-    <h1>you play as
-        <div id=player-color> </div>
-    </h1>
-
-    <div id="turn">
-        <div id="white-turn"></div>
-        <div id="black-turn"></div>
+    <div id="user-game-data">
+        <h1>
+            you play as
+            <div id=player-color>
+                <img src="" alt="">
+            </div>
+        </h1>
     </div>
+    <div id="turn">
+        <div id="white-turn"> <img src="images/go-stone-white.png" alt=""></div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div id="black-turn"> <img src="images/go-stone-black.png" alt=""></div>
+    </div>
+
 
     <!-- <script src=" /socket.io/socket.io.js "></script> -->
     <script src="/socket.io/socket.io.js"></script>
