@@ -29,21 +29,20 @@ socket.on('player', (data) => {
 })
 
 socket.on('roomData', (data) => {
-        const userId = player.userId
-        console.log("userId = ",
-            userId)
-        console.log("data = ", data)
-        const users = data.filter(user => user.userId !== userId);
-        const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
-        $list.innerHTML = msg
-        const html = Mustache.render(playersTemplate, {
-            users
-        })
-        document.querySelector('#players').innerHTML = html
-
-        selectPlayer(li)
+    const userId = player.userId
+    console.log("userId = ",
+        userId)
+    console.log("data = ", data)
+    const users = data.filter(user => user.userId !== userId);
+    const msg = users.length > 0 ? "Please select a player to play with" : "no player as joind yet"
+    $list.innerHTML = msg
+    const html = Mustache.render(playersTemplate, {
+        users
     })
-    //
+    document.querySelector('#players').innerHTML = html
+
+    selectPlayer(li)
+})
 
 
 socket.on('join-game', (data) => {

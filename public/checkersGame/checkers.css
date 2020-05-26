@@ -127,12 +127,12 @@
         left: 10%;
         margin-right: -0%;
         transform: translate(-50%, -50%);
-        border: 1px solid rgb(241, 229, 229);
+        /* border: 1px solid rgb(241, 229, 229); */
         border-radius: 10px;
-        background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%);
-        width: 300px;
+        /* background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%); */
+        width: 200px;
         height: 400px;
-        display: inline-block;
+        /* display: inline-block; */
     }
     
     #turn {
@@ -143,11 +143,11 @@
         margin-right: -0%;
         transform: translate(-50%, -50%);
         font: bold 14px/25px Arial, sans-serif;
-        color: rgb(241, 229, 229);
+        /* color: rgb(241, 229, 229);
         border: 1px solid #8af;
-        border-radius: 50px;
+        border-radius: 50px; */
         cursor: pointer;
-        background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%);
+        /* background: linear-gradient(to top right, rgb(241, 229, 229) 0%, rgb(241, 229, 229) 100%); */
         /* border: #458607; */
         /* padding: 30px; */
         /* width: 100px;
@@ -169,7 +169,7 @@
     
     .my-turn {
         margin: 0;
-        border: 3vmin solid rgba(7, 0, 0, 0.274);
+        border: 1vmin solid #458607;
         border-radius: 100px;
         background-repeat: no-repeat;
         animation: blinker 200000s linear infinite;
@@ -208,9 +208,9 @@
         height: 8vw;
         max-height: 30vh;
         max-width: 30vh;
-        top: 100px;
-        left: 30px;
-        margin-right: -200px;
+        /* top: 100px;
+        left: 30px; */
+        margin-right: -20%;
         /* display: inline-block; */
         margin: 0px;
         /* position: absolute;

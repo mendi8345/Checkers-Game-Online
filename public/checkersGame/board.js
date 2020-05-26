@@ -24,14 +24,10 @@ var $myColor = document.getElementById("player-color")
 
 
 var $newGame = document.getElementById("new-game")
-$newGame.addEventListener('click', leaveGame)
+    // $newGame.addEventListener('click', leaveGame)
     // window.onbeforeunload = fu leaveGame()
-
-window.addEventListener('beforeunload', leaveGame)
-
-
-function leaveGame() {
-    const newGame = confirm("Are you sure you want to play a new game")
+$newGame.addEventListener('click', () => {
+    const newGame = confirm("Are you sure you want to leave the game?\n It will cost you 10 points")
     if (newGame) {
 
         console.log("ma kore itcha")
@@ -45,7 +41,28 @@ function leaveGame() {
 
 
     }
-}
+})
+
+
+// window.addEventListener('beforeunload', leaveGame)
+
+
+// function leaveGame() {
+//     const newGame = confirm("Are you sure you want to leave the game?\n It will cost you 10 points")
+//     if (newGame) {
+
+//         console.log("ma kore itcha")
+//             // player.room = "players"
+//         socket.emit("start-new-game", {
+//             player,
+//             thisRoom,
+//             winner,
+//             loser
+//         })
+
+
+//     }
+// }
 
 
 

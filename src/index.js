@@ -162,7 +162,7 @@ io.on('connection', (socket) => {
 
         if (!data.winner || !data.loser) {
             const user = await findUser(data.player.userId)
-            await updateRating(user, user.rating - 10)
+            await updateRating(user, [user.rating - 10, user.numOfGames + 1, user.numOfLosses + 1], ['rating', 'numOfGames', 'numOfLosses'])
         }
         const users = getUsersInRoom(data.player.room)
         users.forEach(user => {
@@ -170,7 +170,6 @@ io.on('connection', (socket) => {
 
         });
         io.to(data.thisRoom).emit("start-new-game")
-        console.log("++++++++", data)
     })
 
     socket.on("numOfKillInThisTurn", (data) => {
@@ -211,7 +210,7 @@ io.on('connection', (socket) => {
         const user = data.loser
         if (user) {
             const loser = await findUser(user.userId)
-            await updateRating(loser, [loser.rating + 10, loser.numOfGames + 1, loser.numOfLosses + 1], ['rating', 'numOfGames', 'numOfLosses'])
+            await updateRating(loser, [loser.rating - 10, loser.numOfGames + 1, loser.numOfLosses + 1], ['rating', 'numOfGames', 'numOfLosses'])
         }
         const users = getUsersInRoom(data.thisRoom)
         users.forEach(user => {

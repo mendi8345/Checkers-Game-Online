@@ -83,14 +83,12 @@ router.get('/home', async(req, res) => {
 
 
 
-router.get('/users/me', async(req, res) => {
+router.get('/profile', async(req, res) => {
     console.log(token)
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    const user = await User.findById(decoded.id)
+    const user = await User.findById(req.query.id)
     if (!user) {
-        redirectTo = '/users/me'
-            // res.render("profile": )
-
+        redirectTo = '/profile'
     }
     console.log(user, ";;;;;;;;")
     res.render('profile', {
