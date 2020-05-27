@@ -103,18 +103,21 @@ router.get('/profile', async(req, res) => {
         // res.status(200).send(user)
 })
 
-// router.post('/users/logout', async(req, res) => {
-//     try {
-//         req.user.tokens = req.user.tokens.filter((token) => {
-//             return token.token !== req.token
-//         })
-//         await req.user.save()
+router.post('/logout', async(req, res) => {
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        console.log("decoded.id= ", decoded.id)
+        const user = await User.findById(decoded.id)
+        user.tokens = user.tokens.filter((token) => {
+            return token.token !== token
+        })
+        await user.save()
+        res.sendFile(path.join(__dirname, '../../public/html/signup.html'))
 
-//         res.send()
-//     } catch (e) {
-//         res.status(500).send()
-//     }
-// })
+    } catch (e) {
+        res.status(500).send()
+    }
+})
 
 
 

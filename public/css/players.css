@@ -48,6 +48,7 @@ ul {
 }
 
 ul li {
+    cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1em;
     font-weight: 900;
@@ -74,17 +75,27 @@ li.changeBackground:active {
 }
 
 .clickbtn {
-    display: inline-block;
+    display: grid;
     position: relative;
     text-align: center;
     margin: 2px;
-    text-decoration: none;
+    top: 80%;
+    left: 15%;
     font: bold 14px/25px Arial, sans-serif;
     color: #19667d;
     border: 1px solid #8af;
-    border-radius: 10px;
+    border-radius: 5px;
+    /* width: auto; */
     cursor: pointer;
     background: linear-gradient(to top right, rgba(170, 190, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+#logout {
+    width: 200px;
+}
+
+#home-page {
+    width: 200px;
 }
 
 

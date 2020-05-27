@@ -10,6 +10,14 @@ var $list = document.getElementById("list")
 const playersTemplate = document.querySelector('#list-of-players').innerHTML
 const li = document.getElementsByTagName("li")
 
+const logout = document.getElementById("logout")
+logout.addEventListener("click", () => {
+    window.open("/logout")
+})
+const home = document.getElementById("home-page").addEventListener("click", () => {
+    window.open("/home/?id=" + id)
+})
+
 
 socket.emit('join', { id })
 
