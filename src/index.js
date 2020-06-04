@@ -25,6 +25,7 @@ server.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
+
 io.on('connection', (socket) => {
     console.log('New WebSocket connection')
     console.log(socket.id)
@@ -43,7 +44,7 @@ io.on('connection', (socket) => {
             console.log(users)
             io.to(room).emit('roomData', (users))
         }
-        // callback()
+        // callback(error)
     })
 
     socket.on("play-with", (socketInfo) => {
